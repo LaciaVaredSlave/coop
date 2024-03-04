@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>ログイン</title>
+  <style>
+    /* デフォルトのスタイル */
+    .container {
+      max-width: 800px;
+      margin: 20px auto; /* 上側のマージンを増やしてログインページを下に移動 */
+      padding: 20px;
+      background-color: #fff; /* 背景色を白に変更 */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center; /* 中央配置 */
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 5em; /* ログインページ、ホームページへようこそを5倍大きく */
+    }
+    label {
+      font-size: 3em; /* ユーザー名をもっと大きく */
+      color: #333;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 60px; /* ログインボタンをもっと縦に大きく */
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-size: 5em; /* ユーザー名の入力フィールドのフォントサイズを大きく */
+    }
+    input[type="button"] {
+      width: 100%;
+      padding: 40px; /* ログインボタンをもっと縦に大きく */
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 2em; /* ログインボタンのフォントサイズを大きく */
+    }
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+    #homePage {
+      display: none;
+    }
+    .tile-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tile {
+      width: 600px; /* タイルを3倍の大きさに */
+      height: 600px; /* タイルを3倍の大きさに */
+      margin: 50px; /* タイル間のマージンを調整 */
+      background-color: #ccc;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 600px; /* タイル内のテキストの縦方向の中央揃え */
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* モバイルデバイス向けのスタイル */
+    @media only screen and (max-width: 440px) {
+      .container {
+        max-width: 90%; /* 画面幅の90%に調整 */
+        margin: 20px auto; /* 上下のマージンを調整 */
+        padding: 10px; /* paddingを減らす */
+      }
+      .tile {
+        width: 100%; /* タイルの幅を100%にする */
+        height: auto; /* タイルの高さを自動にする */
+        margin: 10px 0; /* タイル間のマージンを調整 */
+        font-size: 16px; /* タイルのフォントサイズを調整 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>○○ポータル</h2>
+    <div id="loginForm">
+      <label for="username">職員コードを入力：</label>
+      <input type="text" id="username" name="username" inputmode="numeric" pattern="\d*" required>
+      <input type="button" value="ログイン" onclick="login()">
+    </div>
+    </div>
+
+    <div id="homePage">
+<iframe src="https://sites.google.com/view/coopishiyama/%E3%83%9B%E3%83%BC%E3%83%A0" style="width:100%; height:500px;"></iframe>
+
+
+
+
+      <h2>★アイコンをタッチ！⇩</h2>
+      <div class="tile-container">
+        <div class="tile" onclick="redirect('https://youtu.be/RFbkgnOw-WE?si=hZeFkO7D1cwC0nq7', '_blank')">コンテンツ1</div>
+        <div class="tile" onclick="redirect('https://docs.google.com/forms/d/e/1FAIpQLSdYCxBHosmbfMt4jIdiy6QG-Uq2VhYWCMX-v1zzcisz23RFrw/viewform?embedded=true')">休み希望オンライン入力</div>
+        <div class="tile" onclick="redirect('content3')">コンテンツ3</div>
+        <div class="tile" onclick="redirect('content4')">コンテンツ4</div>
+        <div class="tile" onclick="redirect('content5')">コンテンツ5</div>
+        <div class="tile" onclick="redirect('content6')">コンテンツ6</div>
+        <div class="tile" onclick="redirect('content7')">コンテンツ7</div>
+        <div class="tile" onclick="redirect('content8')">コンテンツ8</div>
+        <div class="tile" onclick="redirect('content9')">コンテンツ9</div>
+        <input type="button" value="新しいホームページへ" onclick="switchToHomePage2()">
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="homePage2" style="display: none;">
+  <!-- 新しいホームページの内容をここに追加 -->
+  <h2>新しいホームページ</h2>
+  <p>新しいホームページのコンテンツをここに追加します。</p>
+</div>
+
+
+  <script>
+    function login() {
+      var username = document.getElementById('username').value;
+      google.script.run.withSuccessHandler(loginSuccess).login(username);
+    }
+
+    function loginSuccess() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('homePage').style.display = 'block';
+    }
+
+    function redirect(content) {
+      window.location.href = content + '.html'; // コンテンツにリダイレクト
+    }
+    
+  </script>
+</body>
+</html>
